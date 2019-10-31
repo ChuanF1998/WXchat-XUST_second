@@ -1,0 +1,75 @@
+
+<view class="home-search-bar">
+  <view class="home-search-bar__form">
+    <!-- 搜索框 -->
+    <view class=".home-search-bar__box ">
+      <icon class="home-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="home-search-bar__input" placeholder="请输入搜索内容" bindblur="nameinput" value="{{nameinput}}" />
+    </view>
+  </view>
+  <!-- 搜索按钮,调用搜索查询方法 -->
+  <view class="home-search-bar__cancel-btn" bindtap='search_name'>搜索</view>
+</view>
+
+<swiper class="content-info-slide" indicator-color="fgba(255,255,255,.5)" indicator-active-color="#fff" indicator-dots circular autoplay>
+  <swiper-item>
+    <image src="cloud://xust-second-w7q6y.7875-xust-second-w7q6y-1300410405/images/homephoto02.jpg"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="cloud://xust-second-w7q6y.7875-xust-second-w7q6y-1300410405/images/homephoto01.jpg"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 分类区 -->
+<view class="">
+  <view class="optional_bar">
+    <view bindtap="tomobile_digital">
+      <image src="../../icon/mobile_digital.jpg"></image>
+      <text class="text_style">手机数码</text>
+    </view>
+    <view bindtap="tosport">
+      <image src="../../icon/sports.jpg"></image>
+      <text class="text_style">运动休闲</text>
+    </view>
+    <view bindtap="tolife">
+      <image src="../../icon/life.jpg"></image>
+      <text class="text_style">生活用品</text>
+    </view>
+  </view>
+
+  <view class="optional_bar">
+    <view bindtap="tobook">
+      <image src="../../icon/book.jpg"></image>
+      <text class="text_style">书籍资料</text>
+    </view>
+    <view bindtap="tofree">
+      <image src="../../icon/free.jpg"></image>
+      <text class="text_style">免费区</text>
+    </view>
+    <view bindtap="toother">
+      <image src="../../icon/other.jpg"></image>
+      <text class="text_style">其他</text>
+    </view>
+  </view>
+</view>
+
+<!-- 推荐标题 -->
+<view class="recommend-bar">
+  <text decode="true">&nbsp;&nbsp;推荐</text>
+</view>
+
+ <!-- 商品展示栏 -->
+<view class="content-list" bindtap="toproduct" wx:for="{{second_data}}" wx:key="{{index}}" id="{{item._id}}">
+  <view class="content-list-top"></view>
+  <view class="list-item">
+    <image src="../../icon/mobile_digital.jpg"></image>
+  </view>
+
+  <!-- 标题 -->
+  <view class="title-left">{{item.sell_title}}</view> 
+
+  <!-- 价格 -->
+   <view class="press_style">
+    <text decode="true" style="color:red">￥&nbsp;{{item.sell_press}}</text>
+  </view>
+</view>

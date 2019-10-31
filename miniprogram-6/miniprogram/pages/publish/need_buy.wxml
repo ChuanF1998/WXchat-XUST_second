@@ -1,0 +1,23 @@
+<view class="page_setup">
+  <form bindsubmit="getsubmit01">
+    <view class="buy_upload"></view>
+
+    <view class="target_style">
+      <view class="border_line"></view>
+      <textarea class="textarea01" placeholder="在此输入需要什么宝贝" name="need_title" value="{{need_title}}" bindblur="needwhat_input"></textarea>
+    </view>
+
+    <view class="target_style">
+      <view class="border_line"></view>
+      <textarea class="textarea02" placeholder="在此输入需要宝贝的详细说明" name="need_detail" value="{{need_detail}}" bindinput="whatdetailinput"></textarea>
+    </view>
+
+    <view class="border_line"></view>
+    <view class="target_style">
+      <view class="border_line"></view>
+      <textarea class="textarea03" placeholder="在此输入联系方式" name="need_connect" value="{{need_connect}}" bindinput="contactinput02"></textarea>
+    </view>
+
+    <button form-type="submit" class="button_type">发布</button>
+  </form>
+</view>

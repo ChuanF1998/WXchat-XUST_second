@@ -1,0 +1,36 @@
+.detail-type{
+  height: 100%;
+}
+
+.detail-type1{
+  margin: 30rpx;
+}
+
+.image-type{
+  height: 300rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.image-type image{
+  width: 100%;
+  height: 100%;
+}
+
+.cut-line{
+  display: flex;
+  height: 5rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  margin-left: 10rpx;
+  margin-right:10rpx;
+  background-color: #eee;
+}
+
+
+.title-type{
+  white-space: pre-wrap;
+  word-wrap:break-word;
+}
