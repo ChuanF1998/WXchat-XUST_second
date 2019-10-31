@@ -4,6 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openid: "",
     files: [],
     images_fileID: [],
     sell_title: "",
@@ -47,13 +48,13 @@ Page({
     ],
   },
 
-//获取图片
-  chooseImage: function (e) {
+  //获取图片
+  chooseImage: function(e) {
     var that = this;
     wx.chooseImage({
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['original', ''], // 可以指定是原图还是压缩图，默认二者都有compressed
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         that.setData({
           files: that.data.files.concat(res.tempFilePaths)
@@ -65,7 +66,7 @@ Page({
 
 
   //删除图片
-  deleteimage:function(e){
+  deleteimage: function(e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
     var files = that.data.files;
@@ -108,12 +109,10 @@ Page({
     this.setData({
       sell_class: e.detail.value
     })
-    var q=this;
-    console.log(q.data.sell_press);
-    console.log(q.data.sell_class);
-    if(q.data.sell_class=="4"){
+    var q = this;
+    if (q.data.sell_class == "4") {
       q.setData({
-        sell_press:0
+        sell_press: 0
       })
     }
   },
@@ -213,43 +212,72 @@ Page({
         icon: "none",
         duration: 2000
       })
-    } else {  
+    } else {
       const db = wx.cloud.database()
-      db.collection('second-product').add({
-        data: {
-          sell_title: get.sell_title,
-          sell_detail: get.sell_detail,
-          sell_connect: get.sell_connect,
-          sell_press: get.sell_press,
-          sell_class: get.sell_class,
-          sell_shelve: get.sell_shelve,
-          sell_time:db.serverDate()
-        },
-        success: res => {
-          // 在返回结果中会包含新创建的记录的 _id
-          this.setData({
-            counterId: res._id,
-            sell_title: "",
-            sell_detail: "",
-            sell_connect: "",
-            sell_press: "",
-            sell_class: "",
-            sell_class: "",
-            tip: ""
-          })
-          this.onLoad()
-          wx.showToast({
-            title: '发布成功',
-            mask:true
-          })
-        },
-        fail: err => {
-          wx.showToast({
-            icon: 'none',
-            title: '发布失败'
-          })
-        }
-      })
+      var imageFiles = that.data.files;
+
+      for (var i = 0; i < imageFiles.length; i++) {
+        var imageUrl = imageFiles[i].split("/");
+        var name = imageUrl[imageUrl.length - 1]; //得到图片的名称
+        var images_fileID = that.data.images_fileID; //得到data中的fileID
+        console.log(images_fileID)
+        wx.cloud.uploadFile({
+          //云存储路径
+          cloudPath: "second-product/" + name,
+          filePath: imageFiles[i], //文件临时路径
+          formData: {
+            pos:i
+          },
+          success: res => {
+            images_fileID.push(res.fileID);
+            that.setData({
+              images_fileID: images_fileID //更新data中的 fileID
+            })
+            if (images_fileID.length === imageFiles.length) {
+              var get = this.data;
+              db.collection('second-product').add({
+                data: {
+                  sell_title: get.sell_title,
+                  sell_detail: get.sell_detail,
+                  sell_connect: get.sell_connect,
+                  sell_press: get.sell_press,
+                  sell_class: get.sell_class,
+                  sell_shelve: get.sell_shelve,
+                  sell_time: db.serverDate(),
+                  images: get.files,
+                  images_fileID: get.images_fileID
+                },
+                success: res => {
+                  // 在返回结果中会包含新创建的记录的 _id
+                  this.setData({
+                    counterId: res._id,
+                    sell_title: "",
+                    sell_detail: "",
+                    sell_connect: "",
+                    sell_press: "",
+                    sell_class: "",
+                    sell_class: "",
+                    tip: "",
+                    files: [],
+                    images_fileID: []
+                  })
+                  this.onLoad()
+                  wx.showToast({
+                    title: '发布成功',
+                    mask: true
+                  })
+                },
+                fail: err => {
+                  wx.showToast({
+                    icon: 'none',
+                    title: '发布失败'
+                  })
+                }
+              })
+            }
+          }
+        })
+      }
     }
   },
 
@@ -288,7 +316,7 @@ Page({
           })
           wx.showToast({
             title: '发布成功',
-            mask:true
+            mask: true
           })
         },
         fail: err => {

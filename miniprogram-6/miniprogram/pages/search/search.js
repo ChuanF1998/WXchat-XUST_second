@@ -5,8 +5,9 @@ Page({
    */
   data: {
     search_list: [],
-    search_count: 0,
-    regexp: ""
+    search_count: -1,
+    regexp: "",
+    input:""
   },
 
   // 跳转到商品详情页
@@ -22,7 +23,6 @@ Page({
    */
   onLoad: function(options) {
     var input = options.input
-    console.log(input)
     const db = wx.cloud.database()
     var that = this
     db.collection('second-product').where({
@@ -38,6 +38,13 @@ Page({
         that.setData({
           search_count: res.total
         })
+        if (res.total == 0) {
+          wx.showToast({
+            title: "未找到有效数据",
+            icon: "none",
+            duration: 2000,
+          })
+        }
       }
     })
 
@@ -63,13 +70,6 @@ Page({
         })
       }
     })
-    if(that.data.search_count==0){
-      wx.showToast({
-        title: "未找到有效数据",
-        icon: "none",
-       duration: 2000,
-      })
-    }
   },
 
   /**
@@ -97,7 +97,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
   },
 
   /**
