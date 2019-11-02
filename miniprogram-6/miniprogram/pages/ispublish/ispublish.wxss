@@ -1,1 +1,9 @@
-
+.title-left1{
+    margin-top:20rpx;
+  margin-left:230rpx;
+  height: 150rpx;
+  width: 380rpx;
+  position: absolute;
+  text-overflow:ellipsis;
+  word-wrap:break-word;
+}

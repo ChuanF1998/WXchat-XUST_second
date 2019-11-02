@@ -2,17 +2,16 @@
   <view class="detail-type1">
     <!-- 图片展示区 -->
     <swiper class="image-type" indicator-color="fgba(255,255,255,.5)" indicator-active-color="#fff" indicator-dots circular autoplay>
+    <block wx:for="{{item.images_fileID}}" wx:key="{{index}}">
       <swiper-item>
-        <image src="cloud://xust-second-w7q6y.7875-xust-second-w7q6y-1300410405/images/homephoto02.jpg"></image>
+        <image src="{{item}}" mode="scaleToFill" bindtap="img"  data-src="{{item}}"></image>
       </swiper-item>
-      <swiper-item>
-        <image src="cloud://xust-second-w7q6y.7875-xust-second-w7q6y-1300410405/images/homephoto01.jpg"></image>
-      </swiper-item>
+      </block>
     </swiper>
 
     <view class="">
       <!-- 价格 -->
-      <view class="press-type">价格：￥{{item.sell_press}}             </view>
+      <view class="press-type">价格：￥{{item.sell_press}}          </view>
       <view>{{item.sell_time}}</view>
     </view>
 
@@ -30,7 +29,8 @@
     <view class="cut-line"></view>
 
     <view class="title-type" style="height:100rpx">联系方式：\n{{item.sell_connect}}</view>
-
-
+<view style="height:100rpx"></view>
+  <view style="height:30rpx;background-color:#eee"></view>
   </view>
+
 </scroll-view>

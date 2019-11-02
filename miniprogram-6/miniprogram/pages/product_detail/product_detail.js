@@ -11,6 +11,19 @@ Page({
     result:[]
   },
 
+  //图片点击事件
+  img: function (event) {
+    let arr=[];
+    arr.push(this.data.result[0].images_fileID);
+    var src = event.currentTarget.dataset.src;//获取data-src
+    // var imgList = that.data.result.images_fileID;
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: arr[0]// 需要预览的图片http链接列表
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -63,20 +76,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
     
   },
 

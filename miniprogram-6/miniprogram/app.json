@@ -1,7 +1,9 @@
 {
   "pages": [
+    "pages/ispublish/ispublish",
+      "pages/home/home",
     "pages/publish/publish",
-    "pages/home/home",
+ 
 
     
    "pages/search/search",
@@ -17,7 +19,7 @@
     "pages/free/free",
     "pages/other/other",
     "pages/feedback/feedback",
-    "pages/ispublish/ispublish",
+    
     "pages/isneed/isneed",
     "pages/waspublish/waspublish",
     "pages/wasneed/wasneed"

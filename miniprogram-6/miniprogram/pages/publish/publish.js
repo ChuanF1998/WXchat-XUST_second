@@ -52,7 +52,7 @@ Page({
   chooseImage: function(e) {
     var that = this;
     wx.chooseImage({
-      sizeType: ['original', ''], // 可以指定是原图还是压缩图，默认二者都有compressed
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
@@ -223,11 +223,8 @@ Page({
         console.log(images_fileID)
         wx.cloud.uploadFile({
           //云存储路径
-          cloudPath: "second-product/" + name,
+          cloudPath: "second-product-images/"+name ,
           filePath: imageFiles[i], //文件临时路径
-          formData: {
-            pos:i
-          },
           success: res => {
             images_fileID.push(res.fileID);
             that.setData({
