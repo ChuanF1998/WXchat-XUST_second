@@ -8,6 +8,7 @@
   <!-- 标题 -->
   <view class="title-left1">{{item.sell_title}}</view>
 
+<image src="../../icon/Exclamation.jpg" class="Exclamation" catchtap="mune"></image>
   <!-- 价格 -->
   <view class="press_style">
     <text decode="true" style="color:red">￥&nbsp;{{item.sell_press}}</text>
