@@ -6,7 +6,9 @@ Page({
   data: {
     sport: [],
     sport_count: 0,
-    page:1
+    page:1,
+    load: true,
+    loading: false, //加载动画的显示
   },
 
   // 跳转到商品详情页
@@ -26,7 +28,7 @@ Page({
     //1、引用数据库   
     const db = wx.cloud.database();
     db.collection('second-product').where({
-      sell_shelve: "true", // 未下架
+      sell_shelve: true, // 未下架
       sell_class: "1"
     }).count({
       success: function(res) {
@@ -37,7 +39,7 @@ Page({
     })
     //2、开始查询数据了  news对应的是集合的名称   
     db.collection('second-product').limit(10).orderBy("sell_time", "desc").where({
-      sell_shelve: "true", // 未下架
+      sell_shelve: true, // 未下架
       sell_class: "1"
     }).get({
       //如果查询成功的话    
@@ -134,11 +136,4 @@ Page({
     }
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

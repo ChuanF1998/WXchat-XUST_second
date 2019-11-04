@@ -2,7 +2,7 @@
 <view class="content-list" bindtap="toproduct" wx:for="{{free}}" wx:key="{{index}}" id="{{item._id}}">
   <view class="content-list-top"></view>
   <view class="list-item">
-    <image src="../../icon/mobile_digital.jpg"></image>
+    <image src="{{item.images_fileID[0]}}"></image>
   </view>
 
   <!-- 标题 -->

@@ -23,24 +23,58 @@ Page({
     })
   },
 
+  //选项页
+  mune: function(e) {
+    var that=this;
+    var id = e.currentTarget.id;
+    console.log(id);
+    wx.showActionSheet({
+      itemList: ["下架"],
+      success(res) {
+        if (res.tapIndex == 0) {
+
+          const db = wx.cloud.database();
+          db.collection('second-product').doc(id).update({
+            data: {
+              sell_shelve: false
+            },
+            success:function(){
+              wx.showToast({
+                title:"下架成功"
+              }),
+              that.onLoad();
+            },
+            fail:function(){
+              wx.showToast({
+                title: '下架失败',
+                icon:"none",
+              })
+            }
+          })
+        }
+      }
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     var _this = this;
     //1、引用数据库   
-    if (app.globalData.openid){
+    if (app.globalData.openid) {
       _this.setData({
-        openid:app.globalData.openid
+        openid: app.globalData.openid
       })
     }
-    var openId=_this.data.openid;
+    var openId = _this.data.openid;
     const db = wx.cloud.database();
     db.collection('second-product').where({
-      sell_shelve: "true", // 未下架
-      _openid:openId
+      sell_shelve: true, // 未下架
+      _openid: openId
     }).count({
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           ispublish_count: res.total
         })
@@ -48,7 +82,7 @@ Page({
     })
     //2、开始查询数据了  news对应的是集合的名称   
     db.collection('second-product').limit(10).orderBy("sell_time", "desc").where({
-      sell_shelve: "true",// 未下架
+      sell_shelve: true, // 未下架
       _openid: openId
     }).get({
       //如果查询成功的话    
@@ -104,7 +138,7 @@ Page({
    */
   onReachBottom: function() {
     var that = this;
-    var openId=that.data.openid;
+    var openId = that.data.openid;
     let arr1 = that.data.ispublish;
     if (arr1.length < that.data.ispublish_count) {
       that.setData({
@@ -113,7 +147,7 @@ Page({
       })
       const db = wx.cloud.database();
       db.collection('second-product').skip(arr1.length).limit(5).orderBy("sell_time", "desc").where({
-        sell_shelve: "true", // 未下架
+        sell_shelve: true, // 未下架
         _openid: openId
       }).get({
         //如果查询成功的话    
@@ -125,7 +159,7 @@ Page({
             loading: false,
           })
         },
-        fail: function (res) {
+        fail: function(res) {
           that.setData({
             loading: false,
             load: true,
@@ -145,11 +179,4 @@ Page({
       })
     }
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

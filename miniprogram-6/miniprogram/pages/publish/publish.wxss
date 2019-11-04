@@ -20,10 +20,6 @@ page {
   border-bottom: 10rpx solid #eee;
 }
 
-.content {
-  flex: 1;
-}
-
 .content >swiper {
   height: 100%;
 }
@@ -33,12 +29,6 @@ page {
   border-bottom-color: #f60;
 }
 
-.page_setup {
-  background-color: #fff;
-  color: #000;
-  height: 100%;
-}
-
 .image_upload {
   height: 200rpx;
 }
@@ -46,7 +36,6 @@ page {
 .image_upload1 {
   margin-left: 200rpx;
   height: 190rpx;
-  margin-top: 30rpx;
   width: 500rpx;
   white-space: nowrap;
 }

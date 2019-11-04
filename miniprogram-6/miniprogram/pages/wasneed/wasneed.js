@@ -36,7 +36,7 @@ Page({
     var openId = _this.data.openid;
     const db = wx.cloud.database();
     db.collection('need-product').where({
-      need_shelve: "false", // 未下架
+      need_shelve: false, // 未下架
       _openid: openId
     }).count({
       success: function (res) {
@@ -47,7 +47,7 @@ Page({
     })
     //2、开始查询数据了  news对应的是集合的名称   
     db.collection('need-product').limit(10).orderBy("sell_time", "desc").where({
-      need_shelve: "false",// 未下架
+      need_shelve: false,// 未下架
       _openid: openId
     }).get({
       //如果查询成功的话    
@@ -112,7 +112,7 @@ Page({
       })
       const db = wx.cloud.database();
       db.collection('need-product').skip(arr1.length).limit(5).orderBy("sell_time", "desc").where({
-        need_shelve: "false", // 未下架
+        need_shelve: false, // 未下架
         _openid: openId
       }).get({
         //如果查询成功的话    
@@ -145,11 +145,5 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
   

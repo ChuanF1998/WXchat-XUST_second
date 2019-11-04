@@ -5,7 +5,8 @@
     <image src="../../icon/mobile_digital.jpg"></image>
   </view>
 
+<image src="../../icon/Exclamation.jpg" class="Exclamation" catchtap="mune" id="{{item._id}}"></image>
   <!-- 标题 -->
-  <view class="title-left">{{item.need_title}}</view>
+  <view class="title-left02">{{item.need_title}}</view>
 
 </view>

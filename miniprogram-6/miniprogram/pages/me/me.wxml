@@ -25,9 +25,9 @@
     <view class="menu-optional" bindtap="interesting">
       <text decode="true">&nbsp;&nbsp;我感兴趣</text>
     </view>
-    <view class="menu-optional" bindtap="tofeedback">
+    <!-- <view class="menu-optional" bindtap="tofeedback">
       <text decode="true">&nbsp;&nbsp;反馈</text>
-    </view>
+    </view> -->
   </view>
 
 </view>

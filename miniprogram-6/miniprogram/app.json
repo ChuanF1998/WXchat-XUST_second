@@ -1,12 +1,9 @@
 {
   "pages": [
-    "pages/ispublish/ispublish",
-      "pages/home/home",
+    "pages/home/home",
     "pages/publish/publish",
- 
-
-    
-   "pages/search/search",
+    "pages/ispublish/ispublish",
+    "pages/search/search",
     "pages/product_detail/product_detail",
     "pages/product01_detail/product01_detail",
     "pages/me/me",
@@ -19,7 +16,6 @@
     "pages/free/free",
     "pages/other/other",
     "pages/feedback/feedback",
-    
     "pages/isneed/isneed",
     "pages/waspublish/waspublish",
     "pages/wasneed/wasneed"
@@ -68,5 +64,11 @@
     ]
   },
   "debug": true,
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+"networkTimeout": {
+  "request": 10000,
+  "connectSocket": 10000,
+  "uploadFile": 10000,
+  "downloadFile": 10000
+}
 }

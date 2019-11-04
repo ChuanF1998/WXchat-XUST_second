@@ -7,7 +7,8 @@ Page({
     need:[],
     need_count:0,
     page:1,
-
+    load: true,
+    loading: false, //加载动画的显示
   },
 
   // 跳转到商品详情页
@@ -27,7 +28,7 @@ Page({
     //1、引用数据库   
     const db = wx.cloud.database();
     db.collection('need-product').where({
-      need_shelve: "true", // 未下架
+      need_shelve: true, // 未下架
     }).count({
       success: function (res) {
         _this.setData({
@@ -37,7 +38,7 @@ Page({
     })
     //2、开始查询数据了  news对应的是集合的名称   
     db.collection('need-product').limit(10).orderBy("need_time", "desc").where({
-      need_shelve: "true", // 未下架
+      need_shelve: true, // 未下架
     }).get({
       //如果查询成功的话    
       success: res => {
@@ -100,7 +101,7 @@ Page({
       })
       const db = wx.cloud.database();
       db.collection('need-product').skip(arr1.length).limit(5).orderBy("need_time", "desc").where({
-        need_shelve: "true", // 未下架
+        need_shelve: true, // 未下架
       }).get({
         //如果查询成功的话    
         success: res => {
@@ -133,10 +134,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
-  }
 })

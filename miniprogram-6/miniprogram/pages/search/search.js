@@ -26,6 +26,7 @@ Page({
     const db = wx.cloud.database()
     var that = this
     db.collection('second-product').where({
+      sell_shelve:true,
       //使用正则查询，实现对搜索的模糊查询
       sell_title: db.RegExp({
         regexp: input,
@@ -113,10 +114,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

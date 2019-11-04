@@ -4,10 +4,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // sell_title: "",
-    // sell_detail: "",
-    // sell_connect: "",
-    // sell_press: "",
     result:[]
   },
 
@@ -39,10 +35,6 @@ Page({
         var time= res.data[0].sell_time.toLocaleDateString()
         res.data[0].sell_time=time;
         that.setData({
-          // sell_title: res.data.sell_title,
-          // sell_detail: res.data.sell_detail,
-          // sell_connect: res.data.sell_connect,
-          // sell_press: res.data.sell_press,
           result:res.data
         })
         

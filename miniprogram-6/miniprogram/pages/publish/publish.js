@@ -12,11 +12,13 @@ Page({
     sell_connect: "",
     sell_press: "",
     sell_class: "",
-    sell_shelve: "true",
+    sell_shelve: true,
+    sell_live: true,
     need_title: "",
     need_detail: "",
     need_connect: "",
-    need_shelve: "true",
+    need_shelve: true,
+    need_live: true,
     tip: "",
     item: 0,
     tab: 0,
@@ -162,7 +164,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
   },
 
   /**
@@ -188,7 +189,13 @@ Page({
   getsubmit: function(e) {
     var that = this;
     var get = this.data;
-    if (get.sell_title.length == 0) {
+    if (get.files.length == 0) {
+      wx.showToast({
+        title: '至少添加一张图片',
+        icon: "none",
+        duration: 2000
+      })
+    } else if (get.sell_title.length == 0) {
       wx.showToast({
         title: '标题不能为空！',
         icon: "none",
@@ -213,23 +220,32 @@ Page({
         duration: 2000
       })
     } else {
-      const db = wx.cloud.database()
+      wx.showLoading({
+        title: '正在发布',
+      })
+      const db = wx.cloud.database();
       var imageFiles = that.data.files;
-
       for (var i = 0; i < imageFiles.length; i++) {
         var imageUrl = imageFiles[i].split("/");
         var name = imageUrl[imageUrl.length - 1]; //得到图片的名称
         var images_fileID = that.data.images_fileID; //得到data中的fileID
-        console.log(images_fileID)
         wx.cloud.uploadFile({
           //云存储路径
-          cloudPath: "second-product-images/"+name ,
+          cloudPath: "second-product-images/" + name,
           filePath: imageFiles[i], //文件临时路径
           success: res => {
             images_fileID.push(res.fileID);
             that.setData({
               images_fileID: images_fileID //更新data中的 fileID
             })
+            // fail: e => {
+            //   wx.hideLoading();
+            //   wx.showToast({
+            //     title: '上传失败',
+            //     icon: "none",
+            //     duration: 2000
+            //   })
+            // }
             if (images_fileID.length === imageFiles.length) {
               var get = this.data;
               db.collection('second-product').add({
@@ -240,31 +256,31 @@ Page({
                   sell_press: get.sell_press,
                   sell_class: get.sell_class,
                   sell_shelve: get.sell_shelve,
+                  sell_live: get.sell_live,
                   sell_time: db.serverDate(),
                   images: get.files,
                   images_fileID: get.images_fileID
                 },
                 success: res => {
+                  wx.hideLoading();
                   // 在返回结果中会包含新创建的记录的 _id
                   this.setData({
-                    counterId: res._id,
                     sell_title: "",
                     sell_detail: "",
                     sell_connect: "",
                     sell_press: "",
                     sell_class: "",
-                    sell_class: "",
                     tip: "",
                     files: [],
                     images_fileID: []
                   })
-                  this.onLoad()
                   wx.showToast({
                     title: '发布成功',
                     mask: true
                   })
                 },
                 fail: err => {
+                  // wx.hideLoading();
                   wx.showToast({
                     icon: 'none',
                     title: '发布失败'
@@ -272,6 +288,14 @@ Page({
                 }
               })
             }
+          },
+          fail:err=>{
+            wx.hideLoading();
+            wx.showToast({
+              title: '上传失败',
+              icon:"none",
+              duration:2000
+            })
           }
         })
       }
@@ -294,6 +318,7 @@ Page({
         duration: 2000
       })
     } else {
+      var that = this;
       const db = wx.cloud.database()
       db.collection('need-product').add({
         data: {
@@ -301,6 +326,7 @@ Page({
           need_detail: get.need_detail,
           need_connect: get.need_connect,
           need_shelve: get.need_shelve,
+          need_live: get.need_live,
           need_time: db.serverDate()
         },
         success: res => {
@@ -311,6 +337,7 @@ Page({
             need_detail: "",
             need_connect: "",
           })
+          that.onLoad();
           wx.showToast({
             title: '发布成功',
             mask: true
@@ -326,27 +353,4 @@ Page({
     }
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
-
-
 })

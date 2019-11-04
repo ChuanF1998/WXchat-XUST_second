@@ -1,13 +1,9 @@
-<view class="page_setup">
-
-  <scroll-view scroll-y="true" style="height:800rpx">
-
+<view class="page_setup1">
     <form bindsubmit="getsubmit">
-
+    <view style="height:30rpx"></view>
       <view class="image_upload">
         <image src="../../icon/upload1.png" class="image_style" bindtap="chooseImage"></image>
         <scroll-view scroll-x="true" class="image_upload1" bindtap="deleteimage">
-          <!-- <image src="../../icon/upload1.png" class="image_style" bindtap="chooseImage"></image> -->
           <view wx:for="{{files}}" wx:key="{{index}}" class="cc">
             <view class="ff">
               <view class="dd">
@@ -16,7 +12,6 @@
               <image src="{{item}}" class="image_style1"></image>
             </view>
           </view>
-
         </scroll-view>
       </view>
 
@@ -50,6 +45,4 @@
       </view>
       <button form-type="submit" class="button_type">发布</button>
     </form>
-
-  </scroll-view>
 </view>
