@@ -1,0 +1,20 @@
+.title-left1 {
+  margin-top: 20rpx;
+  margin-left: 230rpx;
+  height: 150rpx;
+  width: 380rpx;
+  position: absolute;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.Exclamation {
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 80%;
+  float: right;
+  margin-top: 80rpx;
+  margin-right: 20rpx;
+}
+
+

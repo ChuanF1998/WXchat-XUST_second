@@ -1,0 +1,17 @@
+<!-- 商品展示栏 -->
+<view class="content-list" bindtap="toproduct" wx:for="{{ispublish}}" wx:key="{{index}}" id="{{item._id}}">
+  <view class="content-list-top"></view>
+  <view class="list-item">
+    <image src="{{item.images_fileID[0]}}"></image>
+  </view>
+
+  <!-- 标题 -->
+  <view class="title-left1">{{item.sell_title}}</view>
+
+<image src="../../icon/Exclamation.jpg" class="Exclamation" catchtap="mune" id="{{item._id}}"></image>
+
+  <!-- 价格 -->
+  <view class="press_style">
+    <text decode="true" style="color:red">￥&nbsp;{{item.sell_press}}</text>
+  </view>
+</view>

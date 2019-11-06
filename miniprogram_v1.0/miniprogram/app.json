@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/publish/publish",
+    "pages/ispublish/ispublish",
+    "pages/search/search",
+    "pages/product_detail/product_detail",
+    "pages/product01_detail/product01_detail",
+    "pages/me/me",
+    "pages/need/need",
+    "pages/message/message",
+    "pages/mobile_digital/mobile_digital",
+    "pages/sport/sport",
+    "pages/life/life",
+    "pages/book/book",
+    "pages/free/free",
+    "pages/other/other",
+    "pages/feedback/feedback",
+    "pages/isneed/isneed",
+    "pages/waspublish/waspublish",
+    "pages/wasneed/wasneed"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "西科跳蚤市场",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#9B9B9B",
+    "selectedColor": "#7ED321",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "icon/home01.png",
+        "selectedIconPath": "icon/home02.png"
+      },
+      {
+        "pagePath": "pages/need/need",
+        "text": "需求专区",
+        "iconPath": "icon/free01.png",
+        "selectedIconPath": "icon/free02.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "icon/publish01.png",
+        "selectedIconPath": "icon/publish02.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "收藏",
+        "iconPath": "icon/collection01.png",
+        "selectedIconPath": "icon/collection02.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "个人中心",
+        "iconPath": "icon/me01.png",
+        "selectedIconPath": "icon/me02.png"
+      }
+    ]
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json",
+"networkTimeout": {
+  "request": 10000,
+  "connectSocket": 10000,
+  "uploadFile": 10000,
+  "downloadFile": 10000
+}
+}

@@ -1,0 +1,37 @@
+<view>
+  <!-- 用于显示头像 -->
+  <view class="my_profile">
+    <!-- <image src="{{avatarUrl}}" ></image> -->
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+    <!-- <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取</button>
+    </view> -->
+    <!-- <view class="image_style">
+    <open-data class="image_style"  type="userAvatarUrl"></open-data>
+    </view> -->
+    
+  </view>
+
+  <!-- 菜单栏 -->
+  <view class="menu_style">
+    <view class="menu-optional" bindtap="ispublish">
+      <text decode="true">&nbsp;&nbsp;正在发布的商品</text>
+    </view>
+    <view class="menu-optional" bindtap="waspublish">
+      <text decode="true">&nbsp;&nbsp;已完成交易的商品</text>
+    </view>
+    <view class="menu-optional" bindtap="isneed">
+      <text decode="true">&nbsp;&nbsp;正在发布的需求</text>
+    </view>
+    <view class="menu-optional" bindtap="wasneed">
+      <text decode="true">&nbsp;&nbsp;已完成的需求</text>
+    </view>
+    <view class="menu-optional" bindtap="interesting">
+      <text decode="true">&nbsp;&nbsp;我感兴趣</text>
+    </view>
+    <!-- <view class="menu-optional" bindtap="tofeedback">
+      <text decode="true">&nbsp;&nbsp;反馈</text>
+    </view> -->
+  </view>
+
+</view>

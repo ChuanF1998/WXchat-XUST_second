@@ -1,0 +1,9 @@
+.title-left1{
+  margin-top:20rpx;
+  margin-left:20rpx;
+  height: 150rpx;
+  width: 450rpx;
+  position: absolute;
+  text-overflow:ellipsis;
+  word-wrap:break-word;
+}
