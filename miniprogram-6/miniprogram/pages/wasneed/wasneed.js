@@ -9,8 +9,6 @@ Page({
     wasneed: [],
     wasneed_count: 0,
     page: 1,
-    load: true,
-    loading: false, //加载动画的显示
   },
 
   // 跳转到商品详情页
@@ -56,6 +54,12 @@ Page({
           wasneed: res.data,
           load: true,
           loading: false
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '数据异常',
+          icon: "none"
         })
       }
     })
@@ -106,10 +110,6 @@ Page({
     var openId = that.data.openid;
     let arr1 = that.data.wasneed;
     if (arr1.length < that.data.wasneed_count) {
-      that.setData({
-        load: false,
-        loading: true,
-      })
       const db = wx.cloud.database();
       db.collection('need-product').skip(arr1.length).limit(5).orderBy("sell_time", "desc").where({
         need_shelve: false, // 未下架
@@ -120,15 +120,9 @@ Page({
           that.setData({
             wasneed: arr1.concat(res.data),
             page: that.data.page * 1 + 1,
-            load: true,
-            loading: false,
           })
         },
         fail: function (res) {
-          that.setData({
-            loading: false,
-            load: true,
-          })
           wx.showToast({
             title: '数据异常',
             icon: 'none',

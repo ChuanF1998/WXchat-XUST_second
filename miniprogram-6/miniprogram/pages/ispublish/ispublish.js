@@ -10,8 +10,6 @@ Page({
     ispublish: [],
     ispublish_count: 0,
     page: 1,
-    load: true,
-    loading: false, //加载动画的显示
   },
 
   // 跳转到商品详情页
@@ -78,6 +76,12 @@ Page({
         _this.setData({
           ispublish_count: res.total
         })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '数据异常',
+          icon: "none"
+        })
       }
     })
     //2、开始查询数据了  news对应的是集合的名称   
@@ -89,8 +93,6 @@ Page({
       success: res => {
         _this.setData({
           ispublish: res.data,
-          load: true,
-          loading: false
         })
       }
     })
@@ -141,10 +143,6 @@ Page({
     var openId = that.data.openid;
     let arr1 = that.data.ispublish;
     if (arr1.length < that.data.ispublish_count) {
-      that.setData({
-        load: false,
-        loading: true,
-      })
       const db = wx.cloud.database();
       db.collection('second-product').skip(arr1.length).limit(5).orderBy("sell_time", "desc").where({
         sell_shelve: true, // 未下架
@@ -155,8 +153,6 @@ Page({
           that.setData({
             ispublish: arr1.concat(res.data),
             page: that.data.page * 1 + 1,
-            load: true,
-            loading: false,
           })
         },
         fail: function(res) {

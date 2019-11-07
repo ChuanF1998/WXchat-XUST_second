@@ -25,9 +25,13 @@ Page({
         that.setData({
           result: res.data
         })
-
+      },
+      fail: err => {
+        wx.showToast({
+          title: '数据异常',
+          icon: "none"
+        })
       }
-
     })
   },
 
@@ -63,6 +67,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+    var title = this.data.result[0].need_title;
+    return {
+      title: title
+    }
   }
 })

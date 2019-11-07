@@ -7,8 +7,6 @@ Page({
     free:[],
     free_count:0,
     page:1,
-    load: true,
-    loading: false, //加载动画的显示
   },
 
   // 跳转到商品详情页
@@ -46,8 +44,12 @@ Page({
       success: res => {
         _this.setData({
           free: res.data,
-          load: true,
-          loading: false
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '数据异常',
+          icon: "none"
         })
       }
     })
@@ -97,10 +99,6 @@ Page({
     var that = this
     let arr1 = that.data.free;
     if (arr1.length < that.data.free_count) {
-      that.setData({
-        load: false,
-        loading: true,
-      })
       const db = wx.cloud.database();
       db.collection('second-product').skip(arr1.length).limit(5).orderBy("sell_time", "desc").where({
         sell_shelve: true, // 未下架
@@ -111,15 +109,9 @@ Page({
           that.setData({
             free: arr1.concat(res.data),
             page: that.data.page * 1 + 1,
-            load: true,
-            loading: false,
           })
         },
         fail: function (res) {
-          that.setData({
-            loading: false,
-            load: true,
-          })
           wx.showToast({
             title: '数据异常',
             icon: 'none',

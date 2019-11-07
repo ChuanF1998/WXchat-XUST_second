@@ -157,14 +157,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
@@ -271,8 +269,8 @@ Page({
                     sell_press: "",
                     sell_class: "",
                     tip: "",
-                    files: [],
-                    images_fileID: []
+                    // files: [],
+                    // images_fileID: []
                   })
                   wx.showToast({
                     title: '发布成功',
@@ -289,12 +287,12 @@ Page({
               })
             }
           },
-          fail:err=>{
+          fail: err => {
             wx.hideLoading();
             wx.showToast({
               title: '上传失败',
-              icon:"none",
-              duration:2000
+              icon: "none",
+              duration: 2000
             })
           }
         })
@@ -304,53 +302,71 @@ Page({
 
   //form获取发布求购信息
   getsubmit01: function(e) {
-    var get = this.data;
-    if (get.need_title.length == 0) {
-      wx.showToast({
-        title: '宝贝名不能为空！',
-        icon: "none",
-        duration: 2000
-      })
-    } else if (get.need_connect.length == 0) {
-      wx.showToast({
-        title: '联系方式不能为空！',
-        icon: "none",
-        duration: 2000
-      })
-    } else {
-      var that = this;
-      const db = wx.cloud.database()
-      db.collection('need-product').add({
-        data: {
-          need_title: get.need_title,
-          need_detail: get.need_detail,
-          need_connect: get.need_connect,
-          need_shelve: get.need_shelve,
-          need_live: get.need_live,
-          need_time: db.serverDate()
-        },
-        success: res => {
-          // 在返回结果中会包含新创建的记录的 _id
-          this.setData({
-            counterId: res._id,
-            need_title: "",
-            need_detail: "",
-            need_connect: "",
-          })
-          that.onLoad();
+    wx.getSetting({
+      success: res => {
+        if (!res.authSetting['scope.userInfo']) {
           wx.showToast({
-            title: '发布成功',
-            mask: true
+            title: '请在"个人中心页面"进行授权',
+            icon: "none",
+            duration:2500
           })
-        },
-        fail: err => {
-          wx.showToast({
-            icon: 'none',
-            title: '发布失败'
-          })
+        } else {
+          var get = this.data;
+          if (get.need_title.length == 0) {
+            wx.showToast({
+              title: '宝贝名不能为空！',
+              icon: "none",
+              duration: 2000
+            })
+          } else if (get.need_connect.length == 0) {
+            wx.showToast({
+              title: '联系方式不能为空！',
+              icon: "none",
+              duration: 2000
+            })
+          } else {
+            var avatarUrl=null
+            if (app.globalData.userInfo){
+              avatarUrl = app.globalData.userInfo.avatarUrl
+            }
+            console.log(avatarUrl)
+            var that = this;
+            const db = wx.cloud.database()
+            db.collection('need-product').add({
+              data: {
+                need_title: get.need_title,
+                need_detail: get.need_detail,
+                need_connect: get.need_connect,
+                need_shelve: get.need_shelve,
+                need_live: get.need_live,
+                need_time: db.serverDate(),
+                need_url: avatarUrl
+              },
+              success: res => {
+                // 在返回结果中会包含新创建的记录的 _id
+                this.setData({
+                  counterId: res._id,
+                  need_title: "",
+                  need_detail: "",
+                  need_connect: "",
+                })
+                that.onLoad();
+                wx.showToast({
+                  title: '发布成功',
+                  mask: true
+                })
+              },
+              fail: err => {
+                wx.showToast({
+                  icon: 'none',
+                  title: '发布失败'
+                })
+              }
+            })
+          }
         }
-      })
-    }
+      }
+    })
 
   },
 })

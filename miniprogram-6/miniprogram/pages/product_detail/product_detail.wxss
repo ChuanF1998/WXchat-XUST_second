@@ -32,6 +32,7 @@ background-color: #eee;
   background-color: #eee;
 }
 
+
 .press-type{
   float: left;
   white-space: pre-wrap;
@@ -41,4 +42,10 @@ background-color: #eee;
 .title-type{
   white-space: pre-wrap;
   word-wrap:break-word;
+}
+
+.instyle{
+  margin-left: 80rpx;
+  height: 50rpx;
+  width: 50rpx;
 }

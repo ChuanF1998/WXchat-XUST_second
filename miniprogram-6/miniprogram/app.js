@@ -1,9 +1,8 @@
 //app.js
 App({
-  onLaunch: function () {
-    
-    if (!wx.cloud) {
-    } else {
+  onLaunch: function() {
+
+    if (!wx.cloud) {} else {
       wx.cloud.init({
         // env 参数说明：
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
@@ -14,32 +13,47 @@ App({
       })
     }
     // this.getopenid()
-  // this.globalData = {
-  // }
+    // this.globalData = {
+    // }
     this.onGetOpenid()
+    this.ongetuserInfo()
   },
 
   globalData: {},
 
-  onGetOpenid: function () {
+  onGetOpenid: function() {
     var that = this
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',
       data: {},
-     
       success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        that.globalData.openid = res.result.openid
+        that.globalData.openid = res.result.openid;
       },
       fail: err => {
         wx.showToast({
           icon: 'none',
           title: '获取 openid 失败',
         })
-        // console.error('[云函数] [login] 调用失败', err)
       }
     })
+
   },
+  ongetuserInfo: function() {
+    var that = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: res => {
+              console.log(res.userInfo)
+              that.globalData.userInfo = res.userInfo
+            }
+          })
+        }
+      }
+    })
+  }
+
 
 })

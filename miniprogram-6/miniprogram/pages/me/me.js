@@ -1,3 +1,4 @@
+
 const app=getApp()
 Page({
 
@@ -5,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatar: '',
-    name: ''
+    avatarUrl: '',
+    userInfo: []
   },
   
   // 跳到正在发布二手页面
@@ -68,30 +69,28 @@ wasneed:function(e){
       }
     })
   },
-
+// !this.data.logged && 
   onGetUserInfo: function (e) {
-    if (!this.data.logged && e.detail.userInfo) {
+    if (e.detail.userInfo) {
       this.setData({
-        logged: true,
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
       })
-    }
-  },
+      this.globalData.userInfo=this.data.userInfo
+      console.log(this.globalData.userInfo)
+      var that = this
+      var userInfo=that.data.userInfo
+      const db = wx.cloud.database()
+      db.collection("userInfo").add({
+        data:{
+          userInfo:userInfo
+        },
+        success:res=>{
 
-  onGetOpenid: function () {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-      }
-    })
+        }
+      })
+    }
+
   },
 
   /**
@@ -122,28 +121,5 @@ wasneed:function(e){
     
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
-  },
-
-  navTo:function(e){
-
-  }
 })

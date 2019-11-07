@@ -9,10 +9,11 @@
 }
 
 .image_style{
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 80%;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
   display: flex;
+  overflow:hidden
 }
 
 .menu_style{
@@ -42,8 +43,8 @@
 }
 
 .userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
+  width: 120rpx;
+  height: 120rpx;
   margin: 20rpx;
   border-radius: 50%;
   background-size: cover;

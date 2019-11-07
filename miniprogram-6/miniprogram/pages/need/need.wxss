@@ -1,0 +1,53 @@
+.title-left1 {
+   margin-right: 20rpx;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 430rpx;
+  text-overflow: ellipsis;
+  float: right;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.qq {
+  display: flex;
+  width: 200rpx;
+  height: 200rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.url_style {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.list-item2 {
+  float: left;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.list-item2 image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.text_style{
+  font-size: 30rpx;
+  color: #999999
+}
+
+.detail {
+  margin-right: 20rpx;
+  height: 50rpx;
+  width: 430rpx;
+  float: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

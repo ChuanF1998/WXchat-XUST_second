@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/message/message",
+    
     "pages/publish/publish",
     "pages/ispublish/ispublish",
     "pages/search/search",
@@ -8,7 +10,7 @@
     "pages/product01_detail/product01_detail",
     "pages/me/me",
     "pages/need/need",
-    "pages/message/message",
+    
     "pages/mobile_digital/mobile_digital",
     "pages/sport/sport",
     "pages/life/life",
@@ -39,7 +41,7 @@
       },
       {
         "pagePath": "pages/need/need",
-        "text": "求购专区",
+        "text": "需求专区",
         "iconPath": "icon/free01.png",
         "selectedIconPath": "icon/free02.png"
       },
@@ -51,9 +53,9 @@
       },
       {
         "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "icon/message01.png",
-        "selectedIconPath": "icon/message02.png"
+        "text": "收藏",
+        "iconPath": "icon/collection01.png",
+        "selectedIconPath": "icon/collection02.png"
       },
       {
         "pagePath": "pages/me/me",

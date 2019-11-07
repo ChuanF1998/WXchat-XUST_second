@@ -79,8 +79,6 @@ Page({
     second_data: [],
     page: 1,
     count: 0,
-    load: true,
-    loading: false, //加载动画的显示
   },
 
   /**
@@ -109,8 +107,12 @@ Page({
         //这一步很重要，给ne赋值，没有这一步的话，前台就不会显示值      
         _this.setData({
           second_data: res.data,
-          load: true,
-          loading: false
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '数据异常',
+          icon: "none"
         })
       }
     })
@@ -160,10 +162,6 @@ Page({
     var that = this
     let arr1 = that.data.second_data;
     if (arr1.length < that.data.count) {
-      that.setData({
-        load: false,
-        loading: true,
-      })
       const db = wx.cloud.database();
       db.collection('second-product').skip(arr1.length).limit(5).orderBy("sell_time", "desc").where({
         sell_shelve: true // 未下架
@@ -173,15 +171,9 @@ Page({
           that.setData({
             second_data: arr1.concat(res.data),
             page: that.data.page * 1 + 1,
-            load: true,
-            loading: false,
           })
         },
         fail: function(res) {
-          that.setData({
-            loading: false,
-            load: true,
-          })
           wx.showToast({
             title: '数据异常',
             icon: 'none',

@@ -4,15 +4,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    need:[],
-    need_count:0,
-    page:1,
-    load: true,
-    loading: false, //加载动画的显示
+    need: [],
+    useinfo: [],
+    need_count: 0,
+    page: 1,
   },
 
   // 跳转到商品详情页
-  toproduct01: function (e) {
+  toproduct01: function(e) {
     var that = this;
     var id = e.currentTarget.id;
     wx.navigateTo({
@@ -23,14 +22,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var _this = this;
     //1、引用数据库   
     const db = wx.cloud.database();
     db.collection('need-product').where({
       need_shelve: true, // 未下架
     }).count({
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           need_count: res.total
         })
@@ -44,8 +43,12 @@ Page({
       success: res => {
         _this.setData({
           need: res.data,
-          load: true,
-          loading: false
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '数据异常',
+          icon: "none"
         })
       }
     })
@@ -54,35 +57,35 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-    
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-    
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     var that = this;
     that.onLoad();
     wx.stopPullDownRefresh()
@@ -91,14 +94,10 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     var that = this
     let arr1 = that.data.need;
     if (arr1.length < that.data.need_count) {
-      that.setData({
-        load: false,
-        loading: true,
-      })
       const db = wx.cloud.database();
       db.collection('need-product').skip(arr1.length).limit(5).orderBy("need_time", "desc").where({
         need_shelve: true, // 未下架
@@ -108,15 +107,9 @@ Page({
           that.setData({
             need: arr1.concat(res.data),
             page: that.data.page * 1 + 1,
-            load: true,
-            loading: false,
           })
         },
-        fail: function (res) {
-          that.setData({
-            loading: false,
-            load: true,
-          })
+        fail: function(res) {
           wx.showToast({
             title: '数据异常',
             icon: 'none',
@@ -131,6 +124,8 @@ Page({
         duration: 2000,
       })
     }
+
+
 
   },
 

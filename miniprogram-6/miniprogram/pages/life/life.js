@@ -7,8 +7,6 @@ Page({
     life:[],
     life_count:0,
     page:1,
-    load: true,
-    loading: false, //加载动画的显示
   },
 
   // 跳转到商品详情页
@@ -46,8 +44,12 @@ Page({
       success: res => {
         _this.setData({
           life: res.data,
-          load: true,
-          loading: false
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '数据异常',
+          icon: "none"
         })
       }
     })
@@ -116,10 +118,6 @@ Page({
           })
         },
         fail: function (res) {
-          that.setData({
-            loading: false,
-            load: true,
-          })
           wx.showToast({
             title: '数据异常',
             icon: 'none',

@@ -5,9 +5,10 @@ Page({
    */
   data: {
     search_list: [],
-    search_count: -1,
+    search_count: 0,
     regexp: "",
-    input:""
+    input: "",
+    page:1,
   },
 
   // 跳转到商品详情页
@@ -26,7 +27,7 @@ Page({
     const db = wx.cloud.database()
     var that = this
     db.collection('second-product').where({
-      sell_shelve:true,
+      sell_shelve: true,
       //使用正则查询，实现对搜索的模糊查询
       sell_title: db.RegExp({
         regexp: input,
@@ -97,21 +98,50 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    var that = this
+    that.onLoad()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    var that = this
+    let arr1 = that.data.second_data;
+    if (arr1.length < that.data.count) {
+      const db = wx.cloud.database();
+      db.collection('second-product').skip(arr1.length).limit(5).orderBy("sell_time", "desc").where({
+        sell_shelve: true // 未下架
+      }).get({
+        //如果查询成功的话    
+        success: res => {
+          that.setData({
+            second_data: arr1.concat(res.data),
+            page: that.data.page * 1 + 1,
+          })
+        },
+        fail: function(res) {
+          wx.showToast({
+            title: '数据异常',
+            icon: 'none',
+            duration: 2000,
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+        duration: 2000,
+      })
+    }
   },
 
 })
