@@ -1,0 +1,14 @@
+<!-- 商品展示栏 -->
+<view class="content-list" bindtap="toproduct" wx:for="{{isneed}}" wx:key="{{index}}" id="{{item._id}}">
+  <view class="content-list-top"></view>
+  <view class="list-item2">
+    <view class="qq">
+      <image src="{{item.need_url}}" class="url_style"></image>
+    </view>
+  </view>
+
+  <!-- 标题 -->
+  <view class="title-left02"><text>{{item.need_title}}</text></view>
+  <image src="../../icon/Exclamation.jpg" class="Exclamation" catchtap="mune" id="{{item._id}}"></image>
+  <view class="detail"><text class="text_style">详情：{{item.need_detail}}</text></view>
+</view>

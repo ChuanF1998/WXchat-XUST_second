@@ -1,0 +1,48 @@
+<view>
+  <!-- 用于显示头像 -->
+  <view class="my_profile">
+    <!-- <image src="{{avatarUrl}}" ></image> -->
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+    <!-- <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取</button>
+    </view> -->
+    <!-- <view class="image_style">
+    <open-data class="image_style"  type="userAvatarUrl"></open-data>
+    </view> -->
+
+  </view>
+
+  <view class="mune_interface">
+    <view class="ispublish_style" bindtap="ispublish">
+      <view>
+        <image src="../../icon/ispublish01.jpg" class="menu_image"></image>
+        <text class="word">正在发布的商品</text>
+      </view>
+    </view>
+    <view class="line01"></view>
+    <view class="waspublish_style" bindtap="waspublish">
+      <view>
+        <image src="../../icon/ispublish01.jpg" class="menu_image"></image>
+        <text class="word">已完成交易的商品</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="line03"></view>
+  <view class="mune_interface">
+    <view class="ispublish_style" bindtap="isneed">
+      <view>
+        <image src="../../icon/waspublish01.jpg" class="menu_image"></image>
+        <text class="word">正在发布的需求</text>
+      </view>
+    </view>
+    <view class="line01"></view>
+    <view class="waspublish_style" bindtap="wasneed">
+      <view>
+        <image src="../../icon/waspublish01.jpg" class="menu_image"></image>
+        <text class="word">已完成的需求</text>
+      </view>
+    </view>
+  </view>
+  <view class="line03"></view>
+</view>

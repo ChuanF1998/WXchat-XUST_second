@@ -1,0 +1,34 @@
+<scroll-view class="" scroll-y="true" style="" wx:for="{{result}}" wx:key="{{index}}">
+  <view class="detail-type1">
+    <!-- 图片展示区 -->
+    <!-- <swiper class="image-type" indicator-color="fgba(255,255,255,.5)" indicator-active-color="#fff" indicator-dots circular autoplay>
+      <swiper-item>
+        <image src="cloud://xust-second-w7q6y.7875-xust-second-w7q6y-1300410405/images/homephoto02.jpg"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="cloud://xust-second-w7q6y.7875-xust-second-w7q6y-1300410405/images/homephoto01.jpg"></image>
+      </swiper-item>
+    </swiper> -->
+
+    <!-- 时间 -->
+    <view class="">
+      <view>日期： {{item.need_time}}</view>
+    </view>
+    <view class="cut-line"></view>
+
+    <view class="title-height">
+      <!-- 标题 -->
+      <view class="title-type" style="height:100rpx">标题：{{item.need_title}}</view>
+      </view>
+
+    <view class="cut-line"></view>
+
+    <view class="title-type" style="height:300rpx">详细信息：\n{{item.need_detail}}</view>
+
+    <view class="cut-line"></view>
+
+    <view class="title-type" style="height:100rpx">联系方式：\n{{item.need_connect}}</view>
+
+
+  </view>
+</scroll-view>

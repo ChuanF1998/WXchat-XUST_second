@@ -1,0 +1,48 @@
+<view class="page_setup1">
+    <form bindsubmit="getsubmit">
+    <view style="height:30rpx"></view>
+      <view class="image_upload">
+        <image src="../../icon/upload1.png" class="image_style" bindtap="chooseImage"></image>
+        <scroll-view scroll-x="true" class="image_upload1" bindtap="deleteimage">
+          <view wx:for="{{files}}" wx:key="{{index}}" class="cc">
+            <view class="ff">
+              <view class="dd">
+                <image src="../../icon/delete1.png" class="ee"></image>
+              </view>
+              <image src="{{item}}" class="image_style1"></image>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+      
+      <view class="target_style">
+        <view class="border_line"></view>
+        <!-- <text style="margin-left:50rpx">商品名：</text> -->
+        <textarea class="textarea01" placeholder="在此输入商品名" name="sell_title" value="{{sell_title}}" bindblur="nameinput"></textarea>
+      </view>
+
+      <view class="target_style">
+        <view class="border_line"></view>
+        <!-- <text style="margin-left:50rpx">详细信息：</text> -->
+        <textarea class="textarea02" placeholder="在此输入商品详情" name="sell_detail" value="{{sell_detail}}" bindinput="detailinput"></textarea>
+      </view>
+
+      <view class="target_style">
+        <view class="border_line"></view>
+        <!-- <text style="margin-left:50rpx">联系方式：</text> -->
+        <textarea class="textarea03" placeholder="在此输入联系方式。例如，电话：123456" value="{{sell_connect}}" name="sell_connect" bindinput="contactinput01"></textarea>
+      </view>
+
+      <view class="border_line"></view>
+
+      <view class="pressandclass">
+        <text>价格：</text>
+        <input class="input01" type="digit" name="sell_press" placeholder="0" bindinput="pressInput" value="{{sell_press}}" />
+        <text>分类：</text>
+        <picker bindchange="bindPickerChange" value="{{sell_class}}" range="{{array}}">
+          <view class="picker" value="{{objectArray[sell_class].name}}">-{{objectArray[sell_class].name}}-</view>
+        </picker>
+      </view>
+      <button form-type="submit" class="button_type">发布</button>
+    </form>
+</view>

@@ -1,0 +1,22 @@
+<view class="paixu">
+<view class="xuanxiang" catchtap="paixu1"><text class="{{tab==0? 'active':'wenzi'}}">默认</text></view>
+<view class="xuanxiang" catchtap="paixu2"><text class="{{tab==1? 'active':'wenzi'}}">按价格升序</text></view>
+<view class="xuanxiang" catchtap="paixu3"><text class="{{tab==2? 'active':'wenzi'}}">按价格降序</text></view>
+</view>
+<view style="padding-top:50rpx">
+<!-- 商品展示栏 -->
+<view class="content-list" bindtap="toproduct" wx:for="{{book}}" wx:key="{{index}}" id="{{item._id}}">
+  <view class="content-list-top"></view>
+  <view class="list-item">
+    <image src="{{item.images_fileID[0]}}"></image>
+  </view>
+
+  <!-- 标题 -->
+  <view class="title-left">{{item.sell_title}}</view>
+
+  <!-- 价格 -->
+  <view class="press_style">
+    <text decode="true" style="color:red">￥&nbsp;{{item.sell_press}}</text>
+  </view>
+</view>
+</view>

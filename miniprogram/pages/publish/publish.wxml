@@ -1,0 +1,17 @@
+<view class="tab">
+  <view class="tab-item {{tab==0?'active':''}} " bindtap="changeItem" data-item="0">卖二手</view>
+  <view class="tab-item {{tab==1?'active':''}} " bindtap="changeItem" data-item="1">需求</view>
+</view>
+
+
+<view class="content">
+  <swiper current="{{item}}" bindchange="changeTab">
+    <swiper-item>
+      <include src="sell_second.wxml"/>
+    </swiper-item>
+    <swiper-item>
+      <include src="need_buy.wxml"/>
+    </swiper-item>
+  </swiper>
+</view>
+

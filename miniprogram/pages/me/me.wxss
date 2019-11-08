@@ -1,0 +1,138 @@
+/* pages/me/me.wxss */
+
+.my_profile {
+  display: flex;
+  margin: 70rpx;
+  background-color: #99ccff;
+  height: 300rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.image_style {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: flex;
+  overflow: hidden;
+}
+
+.menu_style {
+  margin: 30rpx;
+}
+
+.menu-optional {
+  margin-top: 5rpx;
+  height: 80rpx;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+}
+
+.userinfo, .uploader, .tunnel {
+  margin-top: 40rpx;
+  height: 140rpx;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+}
+
+.userinfo-avatar:after {
+  border: none;
+}
+
+.userinfo-nickname {
+  font-size: 32rpx;
+  color: #007aff;
+  background-color: white;
+  background-size: cover;
+}
+
+.userinfo-nickname::after {
+  border: none;
+}
+
+.mune_interface {
+  margin-left: 150rpx;
+  margin-right: 150rpx;
+  height: 210rpx;
+  width: 450rpx;
+  display: flex;
+}
+
+.ispublish_style {
+  margin-top: 5rpx;
+  height: 200rpx;
+  width: 200rpx;
+  background-color: #fff;
+  float: left;
+  display: flex;
+}
+
+.ispublish_style>view{
+    flex:1;
+  font-size: 10pt;
+  text-align: center;
+}
+
+
+.waspublish_style {
+  margin-top: 5rpx;
+  height: 200rpx;
+  width: 200rpx;
+  background-color: #ffffff;
+  margin-left: 22rpx;
+  float: right;
+  display: flex;
+}
+
+.waspublish_style>view{
+      flex:1;
+  font-size: 10pt;
+  text-align: center;
+}
+
+.line01 {
+  margin-left: 23rpx;
+  height: 210rpx;
+  width: 3px;
+  background-color: #fff;
+  float: left;
+}
+
+.line03 {
+  margin-left: 125rpx;
+  height: 6rpx;
+  width: 500rpx;
+  background-color: #eee;
+}
+
+.menu_image{
+  margin-top:50rpx;
+  margin-left:70rpx;
+  margin-bottom: 20rpx;
+  height: 60rpx;
+  width: 60rpx;
+  border-radius: 80%;
+  display: block;
+}
+
+.word{
+  font-size: 25rpx;
+  color: #999999
+}

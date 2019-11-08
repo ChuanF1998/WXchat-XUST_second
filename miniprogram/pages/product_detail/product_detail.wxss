@@ -1,0 +1,51 @@
+.detail-type{
+  height: 100%;
+}
+
+.detail-type1{
+  margin: 30rpx;
+}
+
+.image-type{
+height: 500rpx;
+margin-bottom: 20rpx;
+background-color: #eee;
+}
+
+.image-type image{
+  width: 100%;
+  height: 100%;
+}
+
+.pressandtime{
+  background-color: #ff9900;
+  float: left;
+}
+
+.cut-line{
+  display: flex;
+  height: 5rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  margin-left: 10rpx;
+  margin-right:10rpx;
+  background-color: #eee;
+}
+
+
+.press-type{
+  float: left;
+  white-space: pre-wrap;
+  color: #ff0000;
+}
+
+.title-type{
+  white-space: pre-wrap;
+  word-wrap:break-word;
+}
+
+.instyle{
+  margin-left: 80rpx;
+  height: 50rpx;
+  width: 50rpx;
+}

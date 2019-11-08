@@ -1,0 +1,13 @@
+<!-- 商品展示栏 -->
+<view class="content-list" bindtap="toproduct" wx:for="{{wasneed}}" wx:key="{{index}}" id="{{item._id}}">
+  <view class="content-list-top"></view>
+  <view class="list-item2">
+    <view class="qq">
+      <image src="{{item.need_url}}" class="url_style"></image>
+    </view>
+  </view>
+
+  <!-- 标题 -->
+  <view class="title-left1"><text>{{item.need_title}}</text></view>
+  <view class="detail"><text class="text_style">详情：{{item.need_detail}}</text></view>
+</view>

@@ -1,0 +1,169 @@
+.content-list {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  height: 205rpx;
+  margin-bottom: 1px;
+  background-color: #fff;
+}
+
+.content-list-top {
+  height: 5rpx;
+  display: flex;
+  background-color: #eee;
+}
+
+.list-item1 {
+  float: left;
+  margin-left: 5rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+}
+
+.list-item image {
+  margin-left: 1rpx;
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+}
+
+.title-left {
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 430rpx;
+    margin-right: 40rpx;
+  text-overflow: ellipsis;
+  float: right;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  z-index: 1;
+}
+
+.p {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.press_style {
+  display: flex;
+  margin-top: 140rpx;
+  margin-left: 230rpx;
+  width: 100rpx;
+}
+
+.tab {
+  display: flex;
+}
+
+.tab-item {
+  flex: 1;
+  font-size: 10pt;
+  text-align: center;
+  line-height: 72rpx;
+  border-bottom: 10rpx solid #eee;
+}
+
+.content {
+  flex: 1;
+}
+
+.content >swiper {
+  height: 100%;
+}
+
+.tab-item.active {
+  color: #f60;
+  border-bottom-color: #f60;
+}
+
+.page_setup {
+  background-color: #fff;
+  color: #000;
+  height: 100%;
+}
+
+.page_setup1 {
+  background-color: #fff;
+  color: #000;
+  height: 110%;
+}
+
+.qq {
+  display: flex;
+  width: 200rpx;
+  height: 200rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.url_style {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.list-item2 {
+  float: left;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.list-item2 image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.text_style {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.title-left1 {
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 430rpx;
+  text-overflow: ellipsis;
+  float: right;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.detail {
+  margin-right: 20rpx;
+  height: 50rpx;
+  width: 430rpx;
+  float: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paixu {
+  height: 60rpx;
+  width: 750rpx;
+  position: fixed;
+  top: 0rpx;
+  flex: 1;
+  text-align: center;
+  background-color: #99ff99;
+  opacity: 1;
+  z-index: 2；
+}
+
+.xuanxiang{
+  width: 250rpx;
+  float: left;
+  background-color: #99ff99;
+   opacity: 1;
+}
+
+.wenzi{
+  color: #ccc;
+}

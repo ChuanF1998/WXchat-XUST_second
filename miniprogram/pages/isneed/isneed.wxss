@@ -1,0 +1,33 @@
+/* miniprogram/pages/isneed.wxss */
+.Exclamation {
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 80%;
+  float: right;
+  margin-top: 80rpx;
+  margin-right: 20rpx;
+}
+
+.title-left02{
+
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 350rpx;
+  text-overflow: ellipsis;
+  float: left;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.detail {
+
+  height: 50rpx;
+  width: 350rpx;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
