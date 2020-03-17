@@ -24,27 +24,27 @@ Page({
     tab: 0,
     array: ['手机数码', '运动休闲', '生活用品', '书籍资料', '免费区', '其他'],
     objectArray: [{
-        class_id: 0,
+        // class_id: 0,
         name: '手机数码'
       },
       {
-        class_id: 1,
+        // class_id: 1,
         name: '运动休闲'
       },
       {
-        class_id: 2,
+        // class_id: 2,
         name: '生活用品'
       },
       {
-        class_id: 3,
+        // class_id: 3,
         name: '书籍资料'
       },
       {
-        class_id: 4,
+        // class_id: 4,
         name: '免费区'
       },
       {
-        class_id: 5,
+        // class_id: 5,
         name: '其他'
       }
     ],
